@@ -31,9 +31,13 @@ ax[5].imshow(yoda)
 fig.set_size_inches(20, 10)
 
 def remove_green(img):
+    '''
+	objetivo: zerar o brilho dos pixels verdes do fundo.
+    '''
+
     ratio = 255;
     '''
-    obter a porcentagem de brilho de
+    obter a intensidade de brilho de
     cada camada
     '''
     red = img[:,:,0]/ratio
@@ -59,10 +63,10 @@ def remove_green(img):
     combinar o red x green com o blue x green para gerar
     a nova camada de brilho com valores validos
     '''
-    alpha = (redxgreen + bluexgreen) * 255
-    alpha[alpha > 75] = 255
+    bright = (redxgreen + bluexgreen) * 255
+    bright[bright > 75] = 255
     
-    img[:,:,3] = alpha
+    img[:,:,3] = bright
     
     return img
 
